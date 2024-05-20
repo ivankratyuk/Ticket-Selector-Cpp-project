@@ -2,6 +2,33 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QFile>
+#include <QList>
+#include <QStringList>
+#include <QMainWindow>
+#include <QDebug>
+#include <QString>
+#include <QList>
+#include <QStringList>
+#include <QStandardItemModel>
+#include <QLabel>
+#include <QTableView>
+#include <QSet>
+#include <QAction>
+#include <QDialog>
+#include <QShortcut>
+#include <QLineEdit>
+#include <algorithm>
+#include <functional>
+#include <QChar>
+#include <QFileDialog>
+#include <QCoreApplication>
+#include <QStyledItemDelegate>
+#include <QWidget>
+#include <QPainter>
+#include <QPixmap>
+#include <QMessageBox>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -15,9 +42,18 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = nullptr);
+    static QList<QStringList> DS;
     ~MainWindow();
+
+private slots:
+    void on_pushButtonPickUp_clicked();
+
+    void on_comboBoxSort_currentIndexChanged(int order);
 
 private:
     Ui::MainWindow *ui;
+
+    void load_file();
+
 };
 #endif // MAINWINDOW_H

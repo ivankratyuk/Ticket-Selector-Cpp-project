@@ -25,22 +25,22 @@
       </property>
       <item>
        <property name="text">
-        <string>Price ↑</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Price ↓</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
         <string>Days left ↑</string>
        </property>
       </item>
       <item>
        <property name="text">
         <string>Days left ↓</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Price ↑</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Price ↓</string>
        </property>
       </item>
      </widget>

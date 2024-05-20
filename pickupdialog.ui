@@ -14,16 +14,6 @@
    <string>Dialog</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="1">
-    <widget class="QComboBox" name="comboBoxDestCity">
-     <property name="editable">
-      <bool>true</bool>
-     </property>
-     <property name="currentText">
-      <string notr="true">Destination City</string>
-     </property>
-    </widget>
-   </item>
    <item row="4" column="1">
     <widget class="QPushButton" name="pushButtonFind">
      <property name="text">
@@ -38,14 +28,14 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QRadioButton" name="radioButton_2">
+       <widget class="QRadioButton" name="radioButtonEco">
         <property name="text">
          <string>Economy Class</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="radioButton">
+       <widget class="QRadioButton" name="radioButtonBus">
         <property name="text">
          <string>Business Class</string>
         </property>
@@ -117,11 +107,44 @@
    <item row="1" column="0">
     <widget class="QComboBox" name="comboBoxDepCity">
      <property name="editable">
-      <bool>true</bool>
+      <bool>false</bool>
      </property>
      <property name="currentText">
-      <string notr="true">Departure City</string>
+      <string notr="true"/>
      </property>
+     <property name="placeholderText">
+      <string>Departure City</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Departure City</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Delhi</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Mumbai</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Bangalore</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Kolkata</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Hyderabad</string>
+      </property>
+     </item>
     </widget>
    </item>
    <item row="4" column="0">
@@ -146,6 +169,49 @@
       </size>
      </property>
     </spacer>
+   </item>
+   <item row="1" column="1">
+    <widget class="QComboBox" name="comboBoxDestCity">
+     <property name="editable">
+      <bool>false</bool>
+     </property>
+     <property name="currentText">
+      <string notr="true"/>
+     </property>
+     <property name="placeholderText">
+      <string>Destination City</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Destination City</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Delhi</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Mumbai</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Bangalore</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Kolkata</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Hyderabad</string>
+      </property>
+     </item>
+    </widget>
    </item>
   </layout>
  </widget>

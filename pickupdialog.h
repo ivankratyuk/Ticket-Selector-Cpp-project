@@ -2,6 +2,7 @@
 #define PICKUPDIALOG_H
 
 #include <QDialog>
+#include "mainwindow.h"
 
 namespace Ui {
 class PickUpDialog;
@@ -14,6 +15,11 @@ class PickUpDialog : public QDialog
 public:
     explicit PickUpDialog(QWidget *parent = nullptr);
     ~PickUpDialog();
+
+private slots:
+    void on_pushButtonCancel_clicked();
+
+    void on_pushButtonFind_clicked();
 
 private:
     Ui::PickUpDialog *ui;
