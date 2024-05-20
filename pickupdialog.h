@@ -16,6 +16,9 @@ public:
     explicit PickUpDialog(QWidget *parent = nullptr);
     ~PickUpDialog();
 
+signals:
+    void FindTicketsignal(const QList<QStringList> &parameters);
+
 private slots:
     void on_pushButtonCancel_clicked();
 

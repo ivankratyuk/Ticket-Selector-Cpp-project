@@ -28,7 +28,7 @@
 #include <QPainter>
 #include <QPixmap>
 #include <QMessageBox>
-
+#include <QDebug>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -43,12 +43,19 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     static QList<QStringList> DS;
+
     ~MainWindow();
 
 private slots:
     void on_pushButtonPickUp_clicked();
-
     void on_comboBoxSort_currentIndexChanged(int order);
+    void FindTicket(const QList<QStringList> &parameters);
+    void Filter(const QStringList &AirLines);
+
+
+    void on_pushButtonChooseAir_clicked();
+
+    void on_pushButtonReset_clicked();
 
 private:
     Ui::MainWindow *ui;
