@@ -29,7 +29,7 @@ void FilterDialog::on_pushButtonFilter_clicked()
         if (ui->checkBoxIndigo->isChecked())
             AirLines.append("Indigo");
         if (ui->checkBoxSpaceJ->isChecked())
-            AirLines.append("SpaceJet");
+            AirLines.append("SpiceJet");
         if (ui->checkBoxVistara->isChecked())
             AirLines.append("Vistara");
         if (ui->checkBox_AirInd->isChecked())

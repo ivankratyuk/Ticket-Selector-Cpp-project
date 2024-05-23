@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/resource">
         <file>Clean_Dataset.csv</file>
+        <file>Cleaned_Flight_Data.csv</file>
     </qresource>
 </RCC>

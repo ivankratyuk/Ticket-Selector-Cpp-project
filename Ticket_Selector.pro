@@ -9,17 +9,20 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    cartdialog.cpp \
     filterdialog.cpp \
     main.cpp \
     mainwindow.cpp \
     pickupdialog.cpp
 
 HEADERS += \
+    cartdialog.h \
     filterdialog.h \
     mainwindow.h \
     pickupdialog.h
 
 FORMS += \
+    cartdialog.ui \
     filterdialog.ui \
     mainwindow.ui \
     pickupdialog.ui

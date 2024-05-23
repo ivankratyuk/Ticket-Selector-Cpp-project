@@ -17,7 +17,7 @@
    <item>
     <widget class="QCheckBox" name="checkBoxSpaceJ">
      <property name="text">
-      <string>SpaceJet</string>
+      <string>SpiceJet</string>
      </property>
     </widget>
    </item>

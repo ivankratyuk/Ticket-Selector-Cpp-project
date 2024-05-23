@@ -43,6 +43,10 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     static QList<QStringList> DS;
+    static QList<QStringList> Cart;
+    static QList<QStringList> TicketsDS;
+
+
 
     ~MainWindow();
 
@@ -57,10 +61,14 @@ private slots:
 
     void on_pushButtonReset_clicked();
 
+    void on_pushButtonCart_clicked();
+    void handleSelectionChanged(const QModelIndex& index);
+    void add_to_cart();
 private:
     Ui::MainWindow *ui;
 
     void load_file();
+    void ContextMenu(const QPoint& pos);
 
 };
 #endif // MAINWINDOW_H

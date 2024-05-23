@@ -2,8 +2,12 @@
 #include "ui_mainwindow.h"
 #include "pickupdialog.h"
 #include "filterdialog.h"
+#include "cartdialog.h"
 
 QList<QStringList> MainWindow::DS;
+QList<QStringList> MainWindow::Cart;
+QList<QStringList> MainWindow::TicketsDS;
+
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -11,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    load_file(); //load csv to a global array
+    load_file(); //load csv's to a global array
 
     QStandardItemModel *model = new QStandardItemModel(this);
 
@@ -33,6 +37,10 @@ MainWindow::MainWindow(QWidget *parent)
     }
     ui->tableView->setModel(model);
 
+    connect(ui->tableView, &QTableView::customContextMenuRequested, this, &MainWindow::ContextMenu);
+    ui->tableView->setContextMenuPolicy(Qt::CustomContextMenu);
+
+    connect(ui->tableView, &QTableView::clicked, this, &MainWindow::handleSelectionChanged);
 }
 
 MainWindow::~MainWindow()
@@ -88,6 +96,45 @@ void MainWindow::load_file()
         line = in.readLine();
     }
     file.close();
+
+
+    MainWindow::TicketsDS.clear();
+    QString TicketsPath = ":/resource/Cleaned_Flight_Data.csv";
+    QFile TicketF(TicketsPath);
+    TicketF.open(QIODevice::ReadOnly);
+    if (!TicketF.isOpen()) {
+        qDebug() << "Can't open the file";
+        return;
+    }
+
+    QTextStream TicketIn(&TicketF);
+    line = TicketIn.readLine();
+
+    while (!TicketIn.atEnd())
+    {
+        QStringList row;
+        cell.clear();
+
+        for (int i = 0; i < line.length(); ++i)
+        {
+            QChar letter = line[i];
+            if (letter == ',')
+            {
+                row.append(cell);
+                cell.clear();
+                continue;
+            }
+
+            cell += letter;
+
+        }
+
+        row.append(cell);
+        MainWindow::TicketsDS.append(row);
+
+        line = TicketIn.readLine();
+    }
+    TicketF.close();
 }
 
 void MainWindow::on_comboBoxSort_currentIndexChanged(int order)
@@ -256,5 +303,57 @@ void MainWindow::on_pushButtonReset_clicked()
         }
     }
     ui->tableView->setModel(model);
+}
+
+
+void MainWindow::on_pushButtonCart_clicked()
+{
+    CartDialog *cartdialog = new CartDialog(this);
+    cartdialog->show();
+}
+
+void MainWindow::ContextMenu(const QPoint& pos)
+{
+    QModelIndex index = ui->tableView->indexAt(pos);
+
+    if (index.isValid())
+    {
+        QMenu contextMenu(this);
+
+        QAction* toCart = new QAction("Add to cart", this);
+        // QAction* del = new QAction("Delete row", this);
+
+
+        connect(toCart, &QAction::triggered, this, &MainWindow::add_to_cart);
+        // connect(del, &QAction::triggered, this, &MainWindow::delele_row);
+
+        contextMenu.addAction(toCart);
+        // contextMenu.addAction(del);
+
+        contextMenu.exec(ui->tableView->viewport()->mapToGlobal(pos));
+    }
+}
+
+void MainWindow::handleSelectionChanged(const QModelIndex& index)
+{
+    ui->tableView->selectRow(index.row());
+}
+
+void MainWindow::add_to_cart()
+{
+    QModelIndex index = ui->tableView->currentIndex();
+    QAbstractItemModel *model = ui->tableView->model();
+    QModelIndex flightNoIndex = model->index(index.row(), 1);
+    QString flightNo = flightNoIndex.data().toString();
+
+    for (QStringList row : MainWindow::TicketsDS)
+    {
+        if (row[3] == flightNo)
+        {
+            MainWindow::Cart.append(row);
+            qDebug() << row;
+            break;
+        }
+    }
 }
 
