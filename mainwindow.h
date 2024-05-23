@@ -64,6 +64,7 @@ private slots:
     void on_pushButtonCart_clicked();
     void handleSelectionChanged(const QModelIndex& index);
     void add_to_cart();
+    void delete_row();
 private:
     Ui::MainWindow *ui;
 

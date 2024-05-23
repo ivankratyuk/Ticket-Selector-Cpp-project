@@ -19,6 +19,8 @@ public:
 private slots:
     void on_pushButtonClear_clicked();
 
+    void on_pushButtonCheck_clicked();
+
 private:
     Ui::CartDialog *ui;
 };

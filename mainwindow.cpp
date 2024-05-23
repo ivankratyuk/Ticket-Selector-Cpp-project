@@ -321,14 +321,14 @@ void MainWindow::ContextMenu(const QPoint& pos)
         QMenu contextMenu(this);
 
         QAction* toCart = new QAction("Add to cart", this);
-        // QAction* del = new QAction("Delete row", this);
+        QAction* del = new QAction("Delete row", this);
 
 
         connect(toCart, &QAction::triggered, this, &MainWindow::add_to_cart);
-        // connect(del, &QAction::triggered, this, &MainWindow::delele_row);
+        connect(del, &QAction::triggered, this, &MainWindow::delete_row);
 
         contextMenu.addAction(toCart);
-        // contextMenu.addAction(del);
+        contextMenu.addAction(del);
 
         contextMenu.exec(ui->tableView->viewport()->mapToGlobal(pos));
     }
@@ -351,9 +351,13 @@ void MainWindow::add_to_cart()
         if (row[3] == flightNo)
         {
             MainWindow::Cart.append(row);
-            qDebug() << row;
             break;
         }
     }
+}
+
+void MainWindow::delete_row()
+{
+    ui->tableView->setRowHidden(ui->tableView->currentIndex().row(), true);
 }
 
